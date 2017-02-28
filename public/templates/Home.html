@@ -1,0 +1,135 @@
+
+<div id="fullpage">
+  <div class="section " id="section0" style="z-index:2">
+    <div class="intro">
+      <div style="background-color: rgba(245,245,220,0.8);">
+        <img src="img/letrinhas_logo.png" class="dataImage" draggable="false" unselectable="on">
+        <br>
+        <img src="img/ESAG.png" draggable="false" unselectable="on">
+        <div style="font-size:1.2em;pointer-events: none;margin-top:20px">
+      </div>
+        <div id="homeLoginDiv">
+
+          <div class="row form-group">
+            <div class="col-sm-12">
+              <input id="userEmail" class="form-control" data-i18n="[placeholder]userdata.email" placeholder="Email" name="email" type="email" autofocus="autofocus" autocomplete="on">
+              <span id="imgMail" class="glyphicon glyphicon-envelope"></span>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class=" col-sm-12">
+              <input id="psswrd" class="form-control" data-i18n="[placeholder]userdata.password" placeholder="Password" name="password" type="password">
+              <span id="pwdIcon" class="glyphicon glyphicon-lock"></span>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class=" col-sm-12">
+              <button type="submit" id="loginbtn" class="btn btn-success" data-i18n="">Entrar
+                            </button>
+
+            </div>
+          </div>
+          <div class="row form-group">
+
+          </div>
+        </div>
+
+      </div>
+      <div id="upperFooter">
+        <div class="collapse navbar-collapse" id="homeBar">
+          <ul class="nav navbar-nav" >
+
+            <li>
+              <img src="img/ipt.png">
+            </li>
+            <li>
+              <img src="img/ESTT2.png">
+            </li>
+            <li>
+              <img src="img/ESAG.png">
+            </li>
+
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal details-->
+<div class="modal " id="erroLogin" tabindex="-1" role="dialog" style="background-color:#FFA500" aria-labelledby="helpDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xs" role="document" style="width: 240px;
+    margin: 80px auto;padding: 110px 0;">
+    <div class="modal-content" style="background-color:#FFA500; line-height: 50px;text-align:center">
+      <div class="modal-header">
+        <h3 class="modal-title"> Autenticação falhada ! <i class="fa fa-question-circle"></i></h3>
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!--
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+-->
+<script type="text/javascript">
+
+
+
+  $('.card-grid', this.el).css({
+    'height': $('.card-grid').width() + 'px'
+  });
+  $(window).resize(function() {
+    $('.card-grid', this.el).css({
+      'height': $('.card-grid').width() + 'px'
+    });
+  });
+</script>
+<style>
+body {
+  background: url(img/01.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  #fp-nav {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+  }
+  /* Style for our header texts
+    * --------------------------------------- */
+
+  h1 {
+    font-size: 5em;
+    font-family: arial, helvetica;
+    color: #fff;
+    margin: 0;
+  }
+
+  .intro p {
+    color: #fff;
+  }
+  /* Centered texts in each section
+    * --------------------------------------- */
+
+  .section {
+    text-align: center;
+  }
+  /* Bottom menu
+    * --------------------------------------- */
+
+  #infoMenu li a {
+    color: #fff;
+  }
+</style>

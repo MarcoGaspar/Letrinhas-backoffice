@@ -1,0 +1,313 @@
+<div class="translations">
+  <!--MENU -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+
+      <!-- search form -->
+      <div class="input-group">
+        <input type="text" id="txtSearcha" class="form-control" placeholder="Procurar...">
+        <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+      </div>
+
+      <!-- /.search form -->
+
+      <ul class="sidebar-menu">
+        <li>
+          <a>
+            <i class="fa fa-file-text"></i>
+            <span data-i18n="general.tests">Testes</span>
+            <span class="pull-right-container">
+                            <span id="counter" class="label label-primary pull-right">
+                        </span>
+            </span>
+          </a>
+        </li>
+        <!-- Tests new -->
+        <li class="treeview">
+          <a href="#" class="newTest">
+            <span data-i18n="tests.insert">Inserir Teste</span>
+            <span class="pull-right-container">
+                            <span class="label label-success pull-right">+</span>
+            </span>
+          </a>
+
+        </li>
+
+        <!-- Test subjects -->
+        <li class="header" data-i18n="">FILTRAR POR CATEGORIA</li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
+  <div class="content-wrapper">
+
+    <div class="col-md-12 col-sm-12 testItem">
+      <!-- Box Comment -->
+      <form id="newTestForm">
+
+        <div class="box box-widget collapsed-box">
+          <div class="box-header with-border previewTest" filled="false" id="<%=model._id%>" data-widget="collapse">
+            <i class="fa fa-plus pull-right"></i>
+            <div class="user-block">
+
+              <img class="img-circle" src="img/<%= model.subject.split(':')[0] %>.png" alt="User
+                        Image">
+
+              <span class="username">
+              <span class="info-box-text"><%=model.title%></span>
+              </span>
+
+              <span class="description">Criado por: <%=model.profID%></span>
+
+              <span class="hidden"><%=model.subject%></span>
+              <span class="hidden"><%=model.title%></span>
+            </div>
+            <!-- /.user-block -->
+            <div class="box-tools">
+            </div>
+            <!-- /.box-tools -->
+
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div id="mvCrsl<%=model._id%>" class="carousel slide" data-ride="carousel">
+
+              <ol class="carousel-indicators">
+
+              </ol>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#mvCrsl<%=model._id%>" role="button" data-slide="prev" style="color: #F9D0DC;">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#mvCrsl<%=model._id%>" role="button" data-slide="next" style="color: #F9D0DC;">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+
+
+
+
+            <span class="pull-right text-muted"><%=model.schoolYear%>º ano</span>
+          </div>
+          <div style="margin:10px; padding:10px">
+            <div class="col-sm-2 row">
+              <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                  <option disabled selected>Ano Escolar</option>
+                  <optgroup label="1º Ciclo do Ensino Básico">
+                      <option value="1">1º</option>
+                      <option value="2">2º</option>
+                      <option value="3">3º</option>
+                      <option value="4">4º</option>
+                      <optgroup label="2º Ciclo Ensino Básico">
+                          <option value="5">5º</option>
+                          <option value="6">6º</option>
+                          <optgroup label="3º Ciclo Ensino Básico">
+                              <option value="7">7º</option>
+                              <option value="8">8º</option>
+                              <option value="9">9º</option>
+                              <optgroup label="Ensino Secundário">
+                                  <option value="10">10º</option>
+                                  <option value="11">11º</option>
+                                  <option value="12">12º</option>
+                              </optgroup>
+                          </optgroup>
+                      </optgroup>
+                  </optgroup>
+              </select>
+            </div>
+            <div class="col-sm-3 row">
+              <select class="form-control mandatory" id="selectSubject" name="subject">
+                  <option disabled selected>Disciplina</option>
+              </select>
+            </div>
+            <div class="col-sm-3 row">
+              <select class="form-control" id="selectContent" name="content">
+                  <option disabled selected>Conteúdo</option>
+              </select>
+            </div>
+            <div class="col-sm-4 row">
+              <select class="form-control" id="selectSpecification" name="specification">
+                  <option disabled selected>Especificação</option>
+              </select>
+            </div>
+            <div class="row col-md-12">
+              <input type="text" class="form-control mandatory" placeholder="Título" name="title" value="<%=model.title %>">
+              <span class="glyphicon"><i class="fa fa-tag"></i></span>
+            </div>
+            <legend>
+              Perguntas
+              <label id="questionsTestBadgeOld" class="badge">
+            <%=model.questions.length %>
+        </label>
+            </legend>
+            <div id="questionsListOld" style="margin-top:10px"></div>
+            <legend>
+              Novas Perguntas
+              <label id="questionsTestBadge" class="badge">
+            0
+        </label>
+            </legend>
+            <div id="questionsList" style="margin-top:10px"></div>
+      </form>
+
+
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal" id="desenhamarco">
+                            <i class="fa fa-plus" aria-hidden="true"> </i>  Adicionar Pergunta
+                </div>
+
+
+                <div class="col-sm-2 pull-right">
+                  <button id="newtestbtn" type="submit" class="btn btn-success btn-block btn-created " title="Todos os campos são de preenchimento obrigatório.">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        Clonar
+                                    </button>
+      </div>
+      <div class="col-sm-2 pull-right">
+        <button id="buttonCancelar" type="reset" class="btn btn-danger btn-block btn-cancel pull-right">
+                                              <i class="fa fa-times" aria-hidden="true"></i>
+                                          Cancelar
+                                      </button>
+      </div>
+      </div>
+
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer box-comments">
+        <div>
+
+        </div>
+      </div>
+
+      <!-- /.box-footer -->
+
+    </div>
+
+    <!-- /.box -->
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Lista de perguntas</h4>
+      </div>
+      <div class="modal-body">
+        <section class="panel subMenu">
+
+          <ul class="nav navbar-nav">
+            <li><a>Total: <label id="questionsBadge" class=""></label>
+                        </a></li>
+            <li>
+              <input id="txtSearch" type="text" class="form-control" placeholder="Pesquisar" aria-describedby="basic-addon2">
+            </li>
+            <li><a id="orderBy" class="order"><span style="font-size:16px;"
+                                                                class="pull-right hidden-xs showopacity fa fa-sort-alpha-desc"></span>
+                        </a></li>
+
+            <!-- Filter by -->
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-filter"></i>
+                                Tipo </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="text" checked>
+                    <img src="img/text.png" style="height:20px">
+                    <span> Texto </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="multimedia" checked>
+                    <img src="img/multimedia.png" style="height:20px">
+                    <span> Multimédia </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="list" checked>
+                    <img src="img/list.png" style="height:20px">
+                    <span> Lista </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="interpretation" checked>
+                    <img src="img/interpretation.png" style="height:20px">
+                    <span> Interpretação </span></a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="whitespaces" checked>
+                    <img src="img/whitespaces.png" style="height:20px">
+                    <span> Espaços </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="connections" checked>
+                    <img src="img/connections.png" style="height:20px">
+                    <span> Ligações </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="regions" checked>
+                    <img src="img/regions.png" style="height:20px">
+                    <span> Regiões </span></a>
+                </li>
+                <li>
+                  <a class="filter">
+                    <input type="checkbox" value="boxes" checked>
+                    <img src="img/boxes.png" style="height:20px">
+                    <span> Caixas </span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-filter"></i> Disciplina
+                <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="filterSubject" filter="">
+                <li class="dropdown-submenu pull-left">
+                  <a class=" contentFilter" data-toggle="dropdown" value="" aria-expanded="false">Ver todas</a>
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <div class="panel-group" id="allQuestions">
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
